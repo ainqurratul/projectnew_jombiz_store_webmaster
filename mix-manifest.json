@@ -1,0 +1,36 @@
+{
+    "/js/app.js": "/js/app.js",
+    "/js/manifest.js": "/js/manifest.js",
+    "/css/app.css": "/css/app.css",
+    "/js/vendor.js": "/js/vendor.js",
+
+    "/plugins/fontawesome-free/css/all.min.css": "/plugins/fontawesome-free/css/all.min.css",
+    
+    "/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css": "/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css",
+    "/plugins/icheck-bootstrap/icheck-bootstrap.min.css": "/plugins/icheck-bootstrap/icheck-bootstrap.min.css",
+    "/plugins/jqvmap/jqvmap.min.css": "/plugins/jqvmap/jqvmap.min.css",
+    "/dist/css/adminlte.min.css":"/dist/css/adminlte.min.css",
+    "/plugins/overlayScrollbars/css/OverlayScrollbars.min.css":"/plugins/overlayScrollbars/css/OverlayScrollbars.min.css",
+    "/plugins/daterangepicker/daterangepicker.css":"/plugins/daterangepicker/daterangepicker.css",
+    "/plugins/summernote/summernote-bs4.css":"/plugins/summernote/summernote-bs4.css",
+
+    "/plugins/jquery/jquery.min.js":"/plugins/jquery/jquery.min.js",
+    "/plugins/jquery-ui/jquery-ui.min.js":"/plugins/jquery-ui/jquery-ui.min.js",
+    "/plugins/bootstrap/js/bootstrap.bundle.min.js":"/plugins/bootstrap/js/bootstrap.bundle.min.js",
+    "/plugins/chart.js/Chart.min.js":"/plugins/chart.js/Chart.min.js",
+    "/plugins/sparklines/sparkline.js":"/plugins/sparklines/sparkline.js",
+    "/plugins/jqvmap/jquery.vmap.min.js":"/plugins/jqvmap/jquery.vmap.min.js",
+    "/plugins/jqvmap/maps/jquery.vmap.usa.js":"/plugins/jqvmap/maps/jquery.vmap.usa.js",
+    "/plugins/jquery-knob/jquery.knob.min.js":"/plugins/jquery-knob/jquery.knob.min.js",
+    "/plugins/moment/moment.min.js":"/plugins/moment/moment.min.js",
+    "/plugins/daterangepicker/daterangepicker.js":"/plugins/daterangepicker/daterangepicker.js",
+    "/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js":"/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js",
+    "/plugins/summernote/summernote-bs4.min.js":"/plugins/summernote/summernote-bs4.min.js",
+    "/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js":"/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js",
+    "/dist/js/adminlte.js":"/dist/js/adminlte.js",
+    "/dist/js/pages/dashboard.js":"/dist/js/pages/dashboard.js",
+    "/dist/js/demo.js":"/dist/js/demo.js",
+    "/plugins/bs-custom-file-input/bs-custom-file-input.min.js":"/plugins/bs-custom-file-input/bs-custom-file-input.min.js"
+    
+}
+
