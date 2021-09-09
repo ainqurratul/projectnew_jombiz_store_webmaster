@@ -35,6 +35,8 @@
                     <tr>
                       <th style="width: 10px">#</th>
                       <th>Name</th>
+                      <th>Description</th>
+                      <th>Category</th>
                       <th>Price</th>
                       <th>Update At</th>
                       <th style="width: 50px">Action</th>
@@ -45,6 +47,9 @@
                         <tr>
                             <td>{{ $data->id }}</td>
                             <td>{{ $data->name }}</td>
+                            <td>{{ $data->description }}</td>
+                            <td>{{ $data->category_id }}</td>
+
                             <td>{{"RM " .number_format($data->price) }}</td>
                             <td>{{ $data->updated_at }}</td>
 
@@ -91,11 +96,12 @@
                       <div class="form-group">
                         <label>Category</label>
                         <select class="form-control" name="category_id">
-                          <option value = "1">option 1</option>
-                          <option value = "1">option 2</option>
-                          <option value = "1">option 3</option>
-                          <option value = "1">option 4</option>
-                          <option value = "1">option 5</option>
+                          <option value = "1">Whatsapp Bussiness Tool</option>
+                          <option value = "2">Facebook Bussiness Tool</option>
+                          <option value = "3">Instagram Bussiness Tool</option>
+                          <option value = "4">Telegram Bussiness Tool</option>
+                          <option value = "5">Website Bussiness Tool</option>
+                          <option value = "6">Others</option>
                         </select>
                       </div>
                     </div>
