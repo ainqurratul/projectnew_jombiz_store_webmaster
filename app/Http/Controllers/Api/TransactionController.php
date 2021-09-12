@@ -21,7 +21,7 @@ class TransactionController extends Controller
             'ship_method' => 'required',
             'total_transfer' => 'required',
             'bank' => 'required',
-            'resit' => 'required',
+            // 'resit' => 'required',
             'phone' => 'required'
 
         ]);
