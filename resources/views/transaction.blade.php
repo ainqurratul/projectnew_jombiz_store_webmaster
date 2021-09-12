@@ -53,8 +53,8 @@
                             <td>{{"RM " .number_format($data->total_transfer) }}</td>
                             <td>{{ $data->bank }}</td>
                             <td>
-                              <img src = "{{ asset ('public/transfer'.$data->resit)}}" width="70px" height = "70px" alt="Image">
-                              <!-- {{ $data->resit }} -->
+                              <!-- <img src = "{{ asset ('public/transfer'.$data->resit)}}" width="70px" height = "70px" alt="Image"> -->
+                              {{ $data->resit }}
                             </td>  
                             <td>{{ $data->status }}</td>
 
