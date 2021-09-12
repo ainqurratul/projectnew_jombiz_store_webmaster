@@ -39,6 +39,7 @@
                       <th >Delivery Email</th>
                       <th>Total</th>
                       <th>Bank</th>
+                      <th style="width: 100px">Transfer Image</th>
                       <th>Status</th>
                       <th style="width: 150px">Action</th>
                     </tr>
@@ -51,6 +52,10 @@
                             <td>{{ $data->detail_location }}</td>
                             <td>{{"RM " .number_format($data->total_transfer) }}</td>
                             <td>{{ $data->bank }}</td>
+                            <td>
+                              <img src = "{{ asset ('public/transfer'.$data->resit)}}" width="70px" height = "70px" alt="Image">
+                              <!-- {{ $data->resit }} -->
+                            </td>  
                             <td>{{ $data->status }}</td>
 
                             <td>
@@ -84,11 +89,11 @@
                   <thead>
                     <tr>
                       <th style="width: 10px">#</th>
-                      <th>Name</th>
+                      <th >Name</th>
                       <th >Delivery Email</th>
                       <th>Total</th>
                       <th>Bank</th>
-                      <th>Status</th>
+                      <th>Status</th>                      
                       <th style="width: 150px">Action</th>
                     </tr>
                   </thead>
@@ -109,7 +114,11 @@
                                 </a>
                               @elseif($data->status == "PROCESS")
                                 <a href = "{{route('deliverTransaction', $data->id)}}">
-                                  <button type="button" class="btn btn-block btn-warning btn-xs">Delivery</button>
+                                  <button type="button" class="btn btn btn-warning btn-xs">Delivery</button>
+                                </a>
+                              /
+                                <a href = "#">
+                                  <button type="button" class="btn btn btn-secondary btn-xs">Details</button>
                                 </a>
                               @elseif($data->status == "COMPLETED" || $data->status == "CANCELLED")
                                 <a href = "#">

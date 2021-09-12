@@ -30,6 +30,8 @@ Route::get('checkout/user/{id}', 'Api\TransactionController@history');
 
 Route::post('checkout/cancel/{id}', 'Api\TransactionController@cancel');
 
+Route::post('checkout/upload/{id}', 'Api\TransactionController@upload');
+
 Route::post('push', 'Api\TransactionController@pushNotif');
 
 

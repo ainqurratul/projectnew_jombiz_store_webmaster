@@ -10,8 +10,13 @@ class TransactionController extends Controller
 {
     public function index()
     {
-        $transactionPending['listPending'] = Transaction::whereStatus("PENDING")->get();
-        $transactionComplete['listComplete'] = Transaction::where("Status", "NOT LIKE", "%PENDING%")->get();
+        $transactionPending['listPending'] = Transaction::whereIn('status', ['pending', 'paid'])
+        // ->orWhere('status', 'pending')
+        ->get();
+
+        $transactionComplete['listComplete'] = Transaction::where("Status", "NOT LIKE", "%PENDING%")
+        ->where("Status", "NOT LIKE", "%PAID%")
+        ->get();
 
         return view ('transaction')-> with($transactionPending)-> with($transactionComplete);
     }

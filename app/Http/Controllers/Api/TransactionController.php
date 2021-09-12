@@ -21,6 +21,7 @@ class TransactionController extends Controller
             'ship_method' => 'required',
             'total_transfer' => 'required',
             'bank' => 'required',
+            'resit' => 'required',
             'phone' => 'required'
 
         ]);
@@ -159,6 +160,43 @@ class TransactionController extends Controller
             'firebase_response' => json_decode($response)
         ];
         return $data;
+    }
+
+    public function upload(Request $request, $id){
+
+        $transaction = Transaction::with(['details.product', 'users'])->where('id', $id)->first();
+        if($transaction){
+            //update data
+
+            $fileName = "";
+            if($request->image->getClientOriginalName()){ 
+                $file = str_replace(' ','',$request->image->getClientOriginalName()) ;
+                
+                // $upload_path = 'public/transfer';
+                // $server_ip = gethostbyname(gethostbyname());
+                // $upload_url = 'http://'.$server_ip.'/'.$upload_path.$fileName;
+
+                $fileName = date('ymdHi').rand(1, 999).'_'.$file;
+                $request->image->storeAs('public/transfer', $fileName);
+
+            } else {
+                return $this->error('Upload Image Failed! ');
+            }
+            $transaction->update([
+                'status' => "PAID",
+                'resit' => $fileName
+            ]);
+            
+            $this->pushNotif('Transaction Paid', "Hey , your order ".$transaction->details[0]->product->name." has been cancelled.", $transaction->users->fcm);
+
+            return response()->json([
+                'success' => 1,
+                'message' => 'Successful! ',
+                'transaction' => $transaction
+            ]);
+        }else{
+            return $this->error('Load Transaction Failed! ');
+        }
     }
 
     public function error($message){
