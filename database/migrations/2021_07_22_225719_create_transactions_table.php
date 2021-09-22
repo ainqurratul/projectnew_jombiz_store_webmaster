@@ -23,6 +23,7 @@ class CreateTransactionsTable extends Migration
             $table->Integer('code_unique')->unsigned;
             $table->string('status')->nullable();
             $table->string('resit')->nullable();
+            $table->string('path')->nullable();
             $table->string('courier')->nullable();
             $table->string('phone')->nullable();
             $table->string('name')->nullable();

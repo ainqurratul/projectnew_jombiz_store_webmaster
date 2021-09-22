@@ -34,6 +34,9 @@ Route::post('checkout/upload/{id}', 'Api\TransactionController@upload');
 
 Route::post('push', 'Api\TransactionController@pushNotif');
 
+Route::post('download/{id}','TransactionController@download');
+
+
 
 
 

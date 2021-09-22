@@ -6,7 +6,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Table of Product</h1>
+            <h1 class="m-0 text-dark">List of Products</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -25,18 +25,18 @@
 
         <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Product Table</h3>
                 <button type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-plus"></i> Add item</button>
               </div>
-              <!-- /.card-header -->
+
               <div class="card-body p-0">
-                <table class="table table-striped">
+                <table class="table table-bordered">
                   <thead>
                     <tr>
-                      <th style="width: 10px">#</th>
+                      <th style="width: 10px">PID</th>
                       <th>Name</th>
                       <th>Description</th>
                       <th>Category</th>
+                      <th>Image</th>
                       <th>Price</th>
                       <th>Update At</th>
                       <th style="width: 50px">Action</th>
@@ -49,21 +49,17 @@
                             <td>{{ $data->name }}</td>
                             <td>{{ $data->description }}</td>
                             <td>{{ $data->category_id }}</td>
-
+                            <td>{{ $data->image }}</td>
                             <td>{{"RM " .number_format($data->price) }}</td>
                             <td>{{ $data->updated_at }}</td>
-
                             <td>
-                                <a href ="#"><i class= "fa fa-edit blue"></i></a>
-
-                                <a href ="#"><i class= "fa fa-trash red"></i></a>
+                                <a href = '/product/delete/{{ $data->id }}'><i class= "fa fa-trash red"></i></a>
                             </td>
                         </tr>
                     @endforeach
                   </tbody>
                 </table>
               </div>
-              <!-- /.card-body -->
         </div>
 
         <!-- Modal -->

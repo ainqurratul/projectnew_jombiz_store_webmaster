@@ -17,6 +17,7 @@ class Transaction extends Model
         'code_unique',
         'status',
         'resit',
+        'path',
         'courier',
         'phone',
         'name',

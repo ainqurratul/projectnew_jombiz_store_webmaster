@@ -81,6 +81,17 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::where('id', $id)->first()->delete();
+
+        if($user) {
+
+            // return $user->delete();
+            // return view ('user')-> with($user);
+            echo "Record deleted successfully.<br/>";
+            echo '<a href = "/delete-records">Click Here</a> to go back.';
+            // echo "Record deleted successfully.";
+            // echo 'Click Here to go back.';
+
+        }
     }
 }

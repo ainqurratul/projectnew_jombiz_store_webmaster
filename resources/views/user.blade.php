@@ -6,7 +6,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Table User</h1>
+            <h1 class="m-0 text-dark">View User</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -24,15 +24,15 @@
       <div class="container-fluid">
 
         <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Striped Full Width Table</h3>
-              </div>
+              <!-- <div class="card-header">
+                <h3 class="card-title">Table User</h3>
+              </div> -->
               <!-- /.card-header -->
               <div class="card-body p-0">
-                <table class="table table-striped">
+                <table class="table table-bordered">
                   <thead>
                     <tr>
-                      <th style="width: 10px">#</th>
+                      <th style="width: 10px">UID</th>
                       <th>Name</th>
                       <th>Email</th>
                       <th>Phone No.</th>
@@ -46,11 +46,10 @@
                             <td>{{ $data->name }}</td>
                             <td>{{ $data->email }}</td>
                             <td>{{ $data->phone }}</td>
-
                             <td>
-                                <a href ="#"><i class= "fa fa-edit blue"></i></a>
-
-                                <a href ="#"><i class= "fa fa-trash red"></i></a>
+                                <!-- <a href ="#"><i class= "fa fa-edit blue"></i></a> -->
+                                <!-- <a href ="{{url('user/{id}', $data->id)}}}"><i class= "fa fa-trash red"></i></a> -->
+                                <a href = '/delete/{{ $data->id }}'><i class= "fa fa-trash red"></i></a>
                             </td>
                         </tr>
                     @endforeach

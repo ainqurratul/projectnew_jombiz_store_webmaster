@@ -10,6 +10,7 @@ class TransactionController extends Controller
 {
     public function index()
     {
+
         $transactionPending['listPending'] = Transaction::whereIn('status', ['pending', 'paid'])
         // ->orWhere('status', 'pending')
         ->get();
@@ -19,6 +20,25 @@ class TransactionController extends Controller
         ->get();
 
         return view ('transaction')-> with($transactionPending)-> with($transactionComplete);
+    }
+
+    public function download(Request $request, $fileName){
+
+        // dd('ok');
+        return response()->download(public_path('transfer/'.$fileName));
+
+    }
+
+    public function view($id){
+
+        // $data ['viewImage']= Transaction::find($id);
+        $transaction['viewImage'] = Transaction::where('resit', $fileName)->first();
+
+        // return view ('viewOrder', compact('data'));
+        return view ('viewImage')->with($transaction);
+
+        
+
     }
 
     public function cancel($id){

@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\TransactionDetail;
+
+use Illuminate\Support\Facades\DB;
 
 
-class ProductController extends Controller
+class DetailsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +18,14 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $user['listUser'] = Product::all();
-        return view ('product')-> with($user);
+
+        $user['listUser'] = TransactionDetail::all();
+        // return view ('details')-> with($user);
+
+        $product['listProduct'] = Product::all();
+
+        return view ('details')-> with($user)-> with($product);
+
     }
 
     /**
@@ -37,22 +46,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->all());die;
-
-        $fileName = "";
-        if($request->image->getClientOriginalName()){
-            $file = str_replace(' ','',$request->image->getClientOriginalName()) ;
-            $fileName = date('ymdHi').rand(1, 999).'_'.$file;
-            $request->image->storeAs('public/product', $fileName);
-
-        }
-
-        $user = Product::create(array_merge($request->all(),[
-            'image' => $fileName
-        
-        ]));
-        return redirect('product');
-
+        //
     }
 
     /**
@@ -61,9 +55,39 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    // public function show($id)
+    // {
+    //     dd('ok');
+    //     $details = TransactionDetail::where('id', $id)->first();
+    //     return view ('details');
+    //     -> with($details);
+
+
+    //     $userData = UserData::find($id);
+    //     return view('details.show',compact('transaction'));
+
+    //     $user ['transactiondetails'] = TransactionDetail::select('select * from transaction_id')
+    //     ->where('transaction_id', $id)
+    //     ->first();
+    //     return view('details',['users'=>$user]);
+    // }
+
     public function show($id)
     {
-        //
+        $user = TransactionDetail::where('id', $id)->first();
+
+        if($user) {
+
+            return view ('details')-> with($user);
+
+            // return $user->delete();
+            // return view ('user')-> with($user);
+            echo "Record deleted successfully.<br/>";
+            echo '<a href = "/view-records">Click Here</a> to go back.';
+            // echo "Record deleted successfully.";
+            // echo 'Click Here to go back.';
+
+        }
     }
 
     /**
@@ -97,17 +121,6 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        $user = Product::where('id', $id)->first()->delete();
-
-        if($user) {
-
-            // return $user->delete();
-            // return view ('user')-> with($user);
-            echo "Record deleted successfully.<br/>";
-            echo '<a href = "/product">Click Here</a> to go back.';
-            // echo "Record deleted successfully.";
-            // echo 'Click Here to go back.';
-
-        }  
+        //
     }
 }

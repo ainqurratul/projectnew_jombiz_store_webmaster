@@ -6,7 +6,6 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Table of Transaction</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -23,18 +22,19 @@
     <section class="content">
       <div class="container-fluid">
 
-      <!-- Transaction Pending -->
-        <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Transaction Pending</h3>
-                <!-- <button type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-plus"></i> Add item</button> -->
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body p-0">
-                <table class="table table-striped">
-                  <thead>
+        <!-- Transaction Pending -->
+        <h3 class="m-0 text-dark text-lg-center">Transaction Pending</h3>
+        
+        <br>
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-body table-responsive p-0" style="height: 400px;">
+                <table class="table table-head-fixed text-nowrap">
+                <thead>
                     <tr>
-                      <th style="width: 10px">#</th>
+                      <th style="width: 10px">TID</th>
+                      <th style="width: 10px">UID</th>
                       <th >Name</th>
                       <th >Delivery Email</th>
                       <th>Total</th>
@@ -48,24 +48,38 @@
                     @foreach($listPending as $data)
                         <tr>
                             <td>{{ $data->id }}</td>
+                            <td>{{ $data->user_id }}</td>
                             <td>{{ $data->name }}</td>
                             <td>{{ $data->detail_location }}</td>
                             <td>{{"RM " .number_format($data->total_transfer) }}</td>
                             <td>{{ $data->bank }}</td>
                             <td>
                               <!-- <img src = "{{ asset ('public/transfer'.$data->resit)}}" width="70px" height = "70px" alt="Image"> -->
-                              {{ $data->resit }}
+                              <!-- {{ $data->resit }} -->
+                              <!-- <a href ="{{url ('/download', $data->id)}}">View</a> -->
+                              <a href ="{{url ('/view', $data->resit)}}">View</a>
+
                             </td>  
                             <td>{{ $data->status }}</td>
-
                             <td>
-                              <a href = "{{route('cancelTransaction', $data->id)}}">
-                                <button type="button" class="btn btn btn-danger btn-xs">Cancel</button>
-                              </a>
-                              /
-                              <a href = "{{route('confirmTransaction', $data->id)}}">
-                                <button type="button" class="btn btn btn-success btn-xs">Process</button>
-                              </a>
+                              
+                              @if($data->status == "PENDING")
+                                <a href = "{{route('cancelTransaction', $data->id)}}">
+                                  <button type="button" class="btn btn btn-danger btn-xs">Cancel</button>
+                                </a>
+                                /
+                                <a href = "{{route('confirmTransaction', $data->id)}}">
+                                  <button type="button" class="btn btn btn-success btn-xs">Process</button>
+                                </a>
+                              @elseif($data->status == "PAID")
+                                <a href = "{{route('confirmTransaction', $data->id)}}">
+                                    <button type="button" class="btn btn btn-success btn-xs">Process</button>
+                                  </a>
+                                /
+                                <a href="{{ route('details.index')}}">
+                                  <button type="button" class="btn btn btn-secondary btn-xs">Details</button>
+                                </a>
+                                @endif
                             </td>
                         </tr>
                     @endforeach
@@ -73,23 +87,25 @@
                 </table>
               </div>
               <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
         </div>
 
-        <br><br>
+        <br>
+            <!-- Transaction Completed -->
+          <h3 class="m-0 text-dark text-lg-center">Transaction Completed</h3>
+        <br>
 
-        <!-- Transaction Completed -->
-        <div class="card">
-              <div class="card-header">
-                <h3 class="card-title">Transaction Completed</h3>
-                <!-- <button type="button" class="btn btn-info float-right" data-toggle="modal" data-target="#exampleModal"><i class="fas fa-plus"></i> Add item</button> -->
-              </div>
-              <!-- /.card-header -->
-              <div class="card-body p-0">
-                <table class="table table-striped">
-                  <thead>
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-body table-responsive p-0" style="height: 400px;">
+                <table class="table table-head-fixed text-nowrap">
+                <thead>
                     <tr>
-                      <th style="width: 10px">#</th>
-                      <th >Name</th>
+                      <th style="width: 10px">TID</th>
+                      <th style="width: 10px">UID</th>
                       <th >Delivery Email</th>
                       <th>Total</th>
                       <th>Bank</th>
@@ -101,7 +117,7 @@
                     @foreach($listComplete as $data)
                         <tr>
                             <td>{{ $data->id }}</td>
-                            <td>{{ $data->name }}</td>
+                            <td>{{ $data->user_id }}</td>
                             <td>{{ $data->detail_location }}</td>
                             <td>{{"RM " .number_format($data->total_transfer) }}</td>
                             <td>{{ $data->bank }}</td>
@@ -117,13 +133,14 @@
                                   <button type="button" class="btn btn btn-warning btn-xs">Delivery</button>
                                 </a>
                               /
-                                <a href = "#">
+                              <a href="{{ route('details.index')}}">
                                   <button type="button" class="btn btn btn-secondary btn-xs">Details</button>
                                 </a>
                               @elseif($data->status == "COMPLETED" || $data->status == "CANCELLED")
-                                <a href = "#">
+                                <a href="{{ route('details.index')}}">
                                   <button type="button" class="btn btn-block btn-secondary btn-xs">Details</button>
                                 </a>
+
                               @endif
                             </td>
                         </tr>
@@ -132,7 +149,12 @@
                 </table>
               </div>
               <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
         </div>
+        
+        <br>
 
       </div><!-- /.container-fluid -->
     </section>
